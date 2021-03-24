@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchedulesTable extends Migration
+class CreateUserHasPointTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('user_has_point', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('airplane_id')
+            $table->foreignId('user_id')
                 ->nullable()
-                ->constrained('airplanes')
+                ->constrained('users')
                 ->onDelete('SET NULL');
-            $table->string('flight_number');
-            $table->date('flight_date');
-            $table->string('origin');
-            $table->string('destination');
+            $table->foreignId('order_id')
+                ->nullable()
+                ->constrained('users')
+                ->onDelete('SET NULL');
+            $table->string('point');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('user_has_point');
     }
 }

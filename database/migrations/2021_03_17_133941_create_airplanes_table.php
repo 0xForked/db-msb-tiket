@@ -16,12 +16,13 @@ class CreateAirplanesTable extends Migration
         Schema::create('airplanes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('airline_id')
-            ->nullable()
-            ->constrained('airlines')
-            ->onDelete('SET NULL');
-            $table->string('number');
-            $table->string('model');
-
+                ->nullable()
+                ->constrained('airlines')
+                ->onDelete('SET NULL');
+            $table->string('type');
+            $table->string('engine_count');
+            $table->string('engine_type');
+            $table->string('manufacture');
             $table->timestamps();
         });
     }

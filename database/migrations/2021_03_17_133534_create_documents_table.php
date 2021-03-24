@@ -19,10 +19,9 @@ class CreateDocumentsTable extends Migration
                 ->nullable()
                 ->constrained('passengers')
                 ->onDelete('SET NULL');
-
             $table->string('name')->nullable();
             $table->string('type')->nullable();
-            $table->string('url')->nullable();    
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

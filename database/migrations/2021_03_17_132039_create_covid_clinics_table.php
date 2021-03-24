@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchedulesTable extends Migration
+class CreateCovidClinicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('covid_clinics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('airplane_id')
+            $table->foreignId('airport_id')
                 ->nullable()
-                ->constrained('airplanes')
+                ->constrained('airports')
                 ->onDelete('SET NULL');
-            $table->string('flight_number');
-            $table->date('flight_date');
-            $table->string('origin');
-            $table->string('destination');
+            $table->string('title');
+            $table->string('description');
+            $table->string('price');
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('covid_clinics');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePassportsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,24 @@ class CreatePassportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('passports', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')
+                ->nullable()
+                ->constrained('orders')
+                ->onDelete('SET NULL');
             $table->foreignId('passenger_id')
                 ->nullable()
                 ->constrained('passengers')
                 ->onDelete('SET NULL');
-            $table->foreignId('country_id')
+            $table->foreignId('sheet_id')
                 ->nullable()
-                ->constrained('countries')
+                ->constrained('airplane_has_sheets')
                 ->onDelete('SET NULL');
-            $table->string('number')->nullable();
-            $table->date('date_issued')->nullable();
-            $table->date('date_expired')->nullable();
+            $table->string('booking_code');
+            $table->string('ticket_code');
+            $table->string('price');
+            $table->string('total');
             $table->timestamps();
         });
     }
@@ -37,6 +42,6 @@ class CreatePassportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('passports');
+        Schema::dropIfExists('order_items');
     }
 }
