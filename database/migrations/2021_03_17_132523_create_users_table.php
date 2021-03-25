@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('one_time_password');
-            $table->string('one_time_password_expiry');
+            $table->string('one_time_password')->nullable();
+            $table->string('one_time_password_expiry')->nullable();
             $table->timestamps();
         });
     }

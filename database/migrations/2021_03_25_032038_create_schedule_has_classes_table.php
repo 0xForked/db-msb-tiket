@@ -15,9 +15,9 @@ class CreateScheduleHasClassesTable extends Migration
     {
         Schema::create('schedule_has_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('airline_id')
+            $table->foreignId('schedule_id')
                 ->nullable()
-                ->constrained('airlines')
+                ->constrained('schedules')
                 ->onDelete('SET NULL');
             $table->foreignId('class_id')
                 ->nullable()

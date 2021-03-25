@@ -19,11 +19,11 @@ class CreateRoutesTable extends Migration
                 ->nullable()
                 ->constrained('schedules')
                 ->onDelete('SET NULL');
-            $table->date('depart_time');
-            $table->date('arrive_time');
+            $table->string('depart_time');
+            $table->string('arrive_time');
             $table->string('origin');
             $table->string('destination');
-            $table->string('transit');
+            $table->string('transit')->nullable();
             $table->string('price');
             $table->timestamps();
         });

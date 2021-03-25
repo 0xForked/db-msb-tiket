@@ -18,11 +18,10 @@ class CreateAirportsTable extends Migration
             $table->foreignId('city_id')
                 ->nullable()
                 ->constrained('cities');
-            $table->string('code');
             $table->string('name');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('altitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('altitude')->nullable();
             $table->string('psc');
             $table->string('type');
             $table->string('icao');

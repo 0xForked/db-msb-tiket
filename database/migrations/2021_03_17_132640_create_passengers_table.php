@@ -18,7 +18,7 @@ class CreatePassengersTable extends Migration
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users');
-            $table->enum('title', ['mr', 'mrs']);
+            $table->enum('title', ['mr', 'ms']);
             $table->string('identity_number')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();

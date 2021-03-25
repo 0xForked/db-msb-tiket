@@ -23,7 +23,7 @@ class CreateRouteHasFacilitiesTable extends Migration
                 ->nullable()
                 ->constrained('facilities')
                 ->onDelete('SET NULL');
-            $table->string('price');
+            $table->string('price')->nullable();
             $table->timestamps();
         });
     }

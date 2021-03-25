@@ -15,9 +15,9 @@ class CreateAirplaneHasSheetTable extends Migration
     {
         Schema::create('airplane_has_sheets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('airline_id')
+            $table->foreignId('airplane_id')
                 ->nullable()
-                ->constrained('airlines')
+                ->constrained('airplanes')
                 ->onDelete('SET NULL');
             $table->string('name');
             $table->timestamps();
