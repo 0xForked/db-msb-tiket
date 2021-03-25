@@ -39,6 +39,7 @@ class CreateOrdersTable extends Migration
                 ->default(0);
             $table->integer("baggage_insurance")
                 ->default(0);
+            $table->string('total_price')->default("0");
             $table->timestamps();
         });
     }
