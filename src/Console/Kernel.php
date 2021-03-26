@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\DatabaseCreateCommand;
+use App\Console\Commands\ExportExcelCommand;
 use App\Console\Commands\MigrateDevelopmentCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         DatabaseCreateCommand::class,
-        MigrateDevelopmentCommand::class
+        MigrateDevelopmentCommand::class,
+        ExportExcelCommand::class
     ];
 
     /**

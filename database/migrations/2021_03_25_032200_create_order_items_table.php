@@ -30,6 +30,8 @@ class CreateOrderItemsTable extends Migration
             $table->string('booking_code');
             $table->string('ticket_code');
             $table->string('price');
+            $table->string('pcs');
+            $table->string('c19');
             $table->string('total');
             $table->timestamps();
         });

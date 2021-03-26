@@ -55,7 +55,8 @@ class OrderSeeder extends Seeder
                 )->where('airports.iata', $schedule->origin)
                 ->first([
                     'covid_clinics.id as clinic_id',
-                    'covid_clinics.price as clinic_price'
+                    'covid_clinics.price as clinic_price',
+                    'airports.psc as pcs'
                 ]);
 
             $faker = Faker::create('id_ID');
@@ -91,8 +92,11 @@ class OrderSeeder extends Seeder
                     'booking_code' => Str::random(),
                     'ticket_code' => Str::random(8),
                     'price' => $schedule->price,
+                    'pcs' => $airport_clinic->pcs,
+                    'c19' => (($user->id % 2 === 0)
+                        ? 0 : (int)$airport_clinic->clinic_price),
                     'total' => ((int)$schedule->price + (($user->id % 2 === 0)
-                        ? 0 : (int)$airport_clinic->clinic_price))
+                        ? 0 : (int)$airport_clinic->clinic_price)) + $airport_clinic->pcs
                 ]);
 
                 array_pop($available_sheets);
